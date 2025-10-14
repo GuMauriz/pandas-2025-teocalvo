@@ -106,3 +106,10 @@ df_uf_brasil['Região'] = df_uf_brasil['Unidade federativa'].apply(uf_to_region)
 # %%
 df_uf_brasil.head()
 # %%
+
+# Para aplicar nas linhas, usamos axis=1
+def calculate_population_density(row):
+    return row['População (Censo 2022)'] / row['Área (km²)']
+
+df_uf_brasil['Densidade populacional (hab/km²)'] = df_uf_brasil.apply(calculate_population_density, axis=1)
+df_uf_brasil.head()
